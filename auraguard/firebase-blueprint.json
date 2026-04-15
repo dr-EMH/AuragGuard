@@ -1,0 +1,65 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user settings and emergency contacts",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "emergencyContacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "phone": { "type": "string" },
+              "email": { "type": "string", "format": "email" }
+            }
+          }
+        },
+        "settings": {
+          "type": "object",
+          "properties": {
+            "fallDetectionEnabled": { "type": "boolean" },
+            "routeDeviationEnabled": { "type": "boolean" },
+            "countdownDuration": { "type": "number" }
+          }
+        }
+      },
+      "required": ["uid", "email"]
+    },
+    "Alert": {
+      "title": "Emergency Alert",
+      "description": "Stores active and resolved emergency alerts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "location": {
+          "type": "object",
+          "properties": {
+            "latitude": { "type": "number" },
+            "longitude": { "type": "number" }
+          }
+        },
+        "type": { "type": "string", "enum": ["fall", "deviation", "manual"] },
+        "status": { "type": "string", "enum": ["active", "resolved"] }
+      },
+      "required": ["userId", "timestamp", "location", "type", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile and settings"
+    },
+    "/alerts/{alertId}": {
+      "schema": "Alert",
+      "description": "Emergency alerts"
+    }
+  }
+}

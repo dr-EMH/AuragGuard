@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-brand-primary: #4FD1C5; /* Elegant Teal */
+  --color-brand-secondary: #63B3ED; /* Soft Blue */
+  --color-brand-danger: #FF4D4D; /* Elegant Red */
+  --color-brand-bg: #0A0B0E;
+  --color-brand-card: #16181D;
+  --color-brand-border: #2D3748;
+  --color-brand-text: #E2E8F0;
+  --color-brand-text-dim: #94A3B8;
+}
+
+@theme inline {
+    --color-background: var(--brand-bg);
+    --color-foreground: var(--brand-text);
+    --color-card: var(--brand-card);
+    --color-card-foreground: var(--brand-text);
+    --color-popover: var(--brand-card);
+    --color-popover-foreground: var(--brand-text);
+    --color-primary: var(--brand-primary);
+    --color-primary-foreground: #0A0B0E;
+    --color-secondary: #2D3748;
+    --color-secondary-foreground: var(--brand-text);
+    --color-muted: #1A202C;
+    --color-muted-foreground: var(--brand-text-dim);
+    --color-accent: #2D3748;
+    --color-accent-foreground: var(--brand-text);
+    --color-destructive: var(--brand-danger);
+    --color-destructive-foreground: white;
+    --color-border: var(--brand-border);
+    --color-input: rgba(255, 255, 255, 0.05);
+    --color-ring: var(--brand-primary);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    --radius-2xl: 48px;
+}
+
+:root {
+    --brand-primary: #4FD1C5;
+    --brand-secondary: #63B3ED;
+    --brand-danger: #FF4D4D;
+    --brand-bg: #0A0B0E;
+    --brand-card: #16181D;
+    --brand-border: #2D3748;
+    --brand-text: #E2E8F0;
+    --brand-text-dim: #94A3B8;
+    --radius: 1.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+.panic-button-glow {
+  box-shadow: 0 0 40px rgba(255, 77, 77, 0.4);
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%);
+}
+
+.glass-card {
+  @apply bg-brand-card border border-brand-border shadow-xl;
+}
+
+.aura-circle {
+  @apply rounded-full flex flex-col items-center justify-center relative;
+  background: radial-gradient(circle, rgba(79, 209, 197, 0.15) 0%, transparent 70%);
+  border: 1px solid rgba(79, 209, 197, 0.3);
+}
+
+.aura-active-ring {
+  @apply absolute -inset-2 rounded-full border border-dashed border-brand-primary/40;
+}

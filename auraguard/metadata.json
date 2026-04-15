@@ -1,0 +1,8 @@
+{
+  "name": "AuraGuard",
+  "description": "Smart security for your movement and stillness. Proactive protection with sensor monitoring and auto-trigger emergency alerts.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}
